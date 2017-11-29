@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BarcoReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4054013-8ecc-4e3f-93a3-ca11d9a2738e">
+	<property name="com.jaspersoft.studio.data.sql.tables"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="barco"/>
+	<parameter name="barcoLogo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT public.barco.id,
+		public.barco.pais,
+	public.barco.capitan,
+	public.barco.capacidad
+FROM public.barco]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+	</field>
+	<field name="pais" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pais"/>
+	</field>
+	<field name="capitan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="capitan"/>
+	</field>
+	<field name="capacidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="capacidad"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="24" width="210" height="30" uuid="30e703d5-09c7-40d1-a0dd-d3de69074065"/>
+				<textElement>
+					<font fontName="Arial" size="22"/>
+				</textElement>
+				<text><![CDATA[Reporte de Barcos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="444" y="10" width="86" height="70" uuid="052cb83a-da80-451f-b0ef-8b2594e8cb23"/>
+				<imageExpression><![CDATA[$P{barcoLogo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="18" forecolor="#312F94" uuid="28abd5ad-01f0-4ac6-9587-34159728a2e7"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="18" forecolor="#312F94" uuid="adb749d0-6f97-4865-9983-7dc7a6171b64"/>
+				<text><![CDATA[PAIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="18" forecolor="#312F94" uuid="98510bb2-c925-43a8-b010-ff31df092563"/>
+				<text><![CDATA[CAPITAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="18" forecolor="#312F94" uuid="26efcfc9-b10a-4146-9247-55a89988b74b"/>
+				<text><![CDATA[CAPACIDAD]]></text>
+			</staticText>
+			
+		</band>
+	</columnHeader>
+	<detail>
+	<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="f367c019-9cb7-431c-8713-5a96f9b889aa"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+	<textField>
+				<reportElement x="0" y="0" width="141" height="15" forecolor="#121214" uuid="8ab12287-541a-4a26-9ea7-6637c1152c3e"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="15" forecolor="#121214" uuid="844f9fd4-c788-4ba2-9170-f9fd099d3422"/>
+				<textFieldExpression><![CDATA[$F{capitan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="145" height="15" forecolor="#121214" uuid="d228eb3c-c70d-40e6-b655-6a141766b016"/>
+				<textFieldExpression><![CDATA[$F{capacidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="15" forecolor="#121214" uuid="626bb992-2450-4405-858c-a789d97b8e03"/>
+				<textFieldExpression><![CDATA[$F{pais}]]></textFieldExpression>
+			</textField>
+			</band>
+	</detail>
+	<columnFooter>
+		<band height="71" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="57" width="100" height="14" uuid="a35f9351-3492-4b9c-ad2f-f21fb9de77bf"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="48" width="217" height="23" uuid="be593949-ca83-4264-92e1-e6229b95debc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="417" y="48" width="158" height="23" uuid="067a62bf-76fe-4fc4-88d8-1032cf76b358"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>
